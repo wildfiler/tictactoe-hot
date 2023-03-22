@@ -13,10 +13,4 @@ class GamesController < ApplicationController
 
     redirect_to game
   end
-
-  def create
-    game = Game.create!
-
-    redirect_to game
-  end
 end
