@@ -10,3 +10,10 @@ Style/Documentation:
   Enabled: false
 Style/GlobalStdStream:
   Enabled: false
+RSpec/ExampleLength:
+  Max: 15
+  CountAsOne:
+    - array
+    - hash
+RSpec/MultipleExpectations:
+  Max: 3
