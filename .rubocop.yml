@@ -1,0 +1,12 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-capybara
+AllCops:
+  NewCops: enable
+Rails/FilePath:
+  EnforcedStyle: arguments
+Style/Documentation:
+  Enabled: false
+Style/GlobalStdStream:
+  Enabled: false
