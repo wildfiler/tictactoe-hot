@@ -18,7 +18,7 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 
 group :development, :test do
-  gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'debug', '1.7.0', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 6.0.0'
 end
