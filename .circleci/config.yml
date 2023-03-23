@@ -1,0 +1,12 @@
+version: 2.1
+
+orbs:
+  rails: finalcad/rails@2.3.0
+
+workflows:
+  specs:
+    jobs:
+      - rails/build_and_test:
+          e:
+            name: rails/with_redis
+            ruby_version: 3.2.1
