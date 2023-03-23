@@ -23,15 +23,28 @@ class Game
     end
 
     def waiting_game
-      Game.waiting.order(:created_at).first.tap do |game|
-        break if game.blank?
-
-        game.update!(player_o: player.uuid, state: :active)
-      end
+      activate_available_game
+      active_game
     end
 
     def new_game
       Game.create!(player_x: player.uuid)
     end
+
+    def waiting_games
+      Game.waiting
+          .where.not(player_x: player.uuid)
+          .order(:created_at)
+    end
+
+    # rubocop:disable Rails/SkipsModelValidations
+    def activate_available_game
+      waiting_games.limit(1).update_all(
+        player_o: player.uuid,
+        state: :active,
+        updated_at: Time.current,
+      )
+    end
+    # rubocop:enable Rails/SkipsModelValidations
   end
 end
