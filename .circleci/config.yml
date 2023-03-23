@@ -20,7 +20,7 @@ executors:
           POSTGRES_DB: tictactoe_hot
           POSTGRES_PASSWORD: ''
           POSTGRES_HOST_AUTH_METHOD: trust
-      - image: cimg/redis
+      - image: cimg/redis:6.2.6
 
 workflows:
   specs:
