@@ -3,10 +3,27 @@ version: 2.1
 orbs:
   rails: finalcad/rails@2.3.0
 
+executors:
+  with_redis:
+    docker:
+      - image: cimg/ruby:3.2.1
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_PATH: ./vendor/bundle
+          RAILS_ENV: test
+          DB_USERNAME: tictactoe_hot
+          DB_NAME: tictactoe_hot
+          DB_PASSWORD: ''
+      - image: cimg/postgres:14.7
+        environment:
+          POSTGRES_USER: tictactoe_hot
+          POSTGRES_DB: tictactoe_hot
+          POSTGRES_PASSWORD: ''
+          POSTGRES_HOST_AUTH_METHOD: trust
+      - image: cimg/redis
+
 workflows:
   specs:
     jobs:
       - rails/build_and_test:
-          e:
-            name: rails/with_redis
-            ruby_version: 3.2.1
+          e: with_redis
