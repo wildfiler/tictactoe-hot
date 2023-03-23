@@ -22,7 +22,27 @@ describe Game::Join do
     )
   end
 
-  context 'when game for player exists' do
+  context 'when waiting game for player exists' do
+    it 'returns correct game' do
+      player = build(:player)
+      game = create(:game, :waiting, player_x: player.uuid)
+
+      result_game = described_class.new(player).call
+
+      expect(result_game).to eq(game)
+    end
+
+    it 'does not change state' do
+      player = build(:player)
+      game = create(:game, :waiting, player_x: player.uuid)
+
+      expect do
+        described_class.new(player).call
+      end.not_to(change { game.reload.state })
+    end
+  end
+
+  context 'when active game for player exists' do
     context 'when player_x' do
       it 'returns correct game' do
         player = build(:player)

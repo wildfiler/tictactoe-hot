@@ -2,12 +2,12 @@
 
 class PlayersController < ApplicationController
   def new
-    @player = Player.new
+    @player = Player.load_from(cookies.signed)
   end
 
   def create
-    player = Player.new(player_params)
-
+    player = Player.load_from(cookies.signed)
+    player.assign_attributes(player_params)
     player.save_to(cookies.signed)
 
     redirect_to new_game_path

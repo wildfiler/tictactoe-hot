@@ -9,10 +9,14 @@ class Game
     end
 
     def call
-      active_game || waiting_game || new_game
+      waiting_player_game || active_game || waiting_game || new_game
     end
 
     private
+
+    def waiting_player_game
+      Game.waiting.where(player_x: player.uuid).first
+    end
 
     def active_game
       Game.active.for_player(player).first

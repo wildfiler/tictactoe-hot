@@ -39,6 +39,23 @@ describe 'User starts the game' do
     end
   end
 
+  context 'when user tries to rejoin' do
+    it 'does not start new game' do
+      join_the_game
+
+      within('#game') do
+        expect(page).to have_css('.notice', text: 'Waiting for other player to join...')
+      end
+
+      visit '/'
+      click_on 'Join the game!'
+
+      within('#game') do
+        expect(page).to have_css('.notice', text: 'Waiting for other player to join...')
+      end
+    end
+  end
+
   def join_the_game
     visit '/'
     fill_in 'Name:', with: 'Joe'
