@@ -18,7 +18,7 @@ describe Game::Join do
 
     expect(game).to have_attributes(
       player_x: player.uuid,
-      state: 'waiting'
+      state: 'waiting',
     )
   end
 

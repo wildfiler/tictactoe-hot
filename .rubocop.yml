@@ -17,3 +17,5 @@ RSpec/ExampleLength:
     - hash
 RSpec/MultipleExpectations:
   Max: 3
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
