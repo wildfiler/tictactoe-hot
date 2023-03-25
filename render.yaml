@@ -1,0 +1,18 @@
+databases:
+  - name: tictactoe-hot
+    databaseName: tictactoe-hot
+    user: tictactoe-hot
+
+services:
+  - type: web
+    name: tictactoe-hot
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: tictactoe-hot
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
