@@ -1,5 +1,4 @@
-= turbo_frame_tag(:game) do
-  = form_for @player, data: { controller: 'form-redirect', action: 'turbo:submit-end->form-redirect#next' } do |f|
-    = f.label :name
-    = f.text_field :name
-    = f.submit
+= form_for @player, data: { turbo: false } do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.submit
