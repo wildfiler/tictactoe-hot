@@ -1,11 +1,13 @@
 databases:
   - name: tictactoe_hot
+    plan: free
     databaseName: tictactoe_hot
     user: tictactoe_hot
 
 services:
   - type: web
     name: tictactoe-hot
+    plan: free
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
