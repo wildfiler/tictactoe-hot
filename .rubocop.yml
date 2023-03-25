@@ -19,3 +19,5 @@ RSpec/MultipleExpectations:
   Max: 3
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
