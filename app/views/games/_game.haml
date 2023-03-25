@@ -1,0 +1,5 @@
+.notice
+  - if game.waiting?
+    %p= t('.waiting')
+  - if game.active?
+    %p= t('.playing_for', symbol: game.symbol_for(player))

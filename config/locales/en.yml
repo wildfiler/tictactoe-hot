@@ -38,8 +38,6 @@ en:
       player:
         create: Join the game!
   games:
-    new:
-      waiting: Waiting for other player to join...
-    show:
+    game:
       waiting: Waiting for other player to join...
       playing_for: You are playing for %{symbol}.

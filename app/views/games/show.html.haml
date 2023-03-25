@@ -1,6 +1,3 @@
-= turbo_frame_tag(:game) do
-  .notice
-    - if @game.waiting?
-      %p= t('.waiting')
-    - if @game.active?
-      %p= t('.playing_for', symbol: @game.symbol_for(@player))
+= turbo_stream_from [@game, @player.uuid], target: :game
+= turbo_frame_tag(@game) do
+  = render partial: @game, locals: { game: @game, player: @player }
